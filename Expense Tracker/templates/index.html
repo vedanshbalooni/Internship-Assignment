@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <form id="expenseForm" onsubmit="return addExpense()">
+            <input type="text" id="descriptionInput" placeholder="Description" required>
+            <input type="text" id="categoryInput" placeholder="Category" required>
+            <input type="number" id="amountInput" placeholder="Amount" required>
+            <button type="submit">Add Expense</button>
+        </form>
+        <ul id="expenseList">
+            {% for expense in expenses %}
+            <li>{{ expense.description }} - {{ expense.amount }} - {{ expense.category }} - {{ expense.date }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
